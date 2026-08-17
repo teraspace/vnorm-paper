@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vnorm-torch"
+version = "0.1.0"
+description = "A BatchNorm-compatible parametric activation function for PyTorch"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+authors = [
+  { name = "Carlos M. Patino Machado" }
+]
+keywords = ["pytorch", "deep-learning", "activation-function", "batch-normalization", "neural-networks"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = ["torch>=2.0"]
+
+[project.optional-dependencies]
+dev = [
+  "build>=1.2",
+  "pytest>=8.0",
+]
+
+[project.urls]
+Homepage = "https://tetraspace.llc/vnorm"
+Repository = "https://github.com/teraspace/vnorm-paper"
+Documentation = "https://zenodo.org/records/21960413"
+
+[tool.setuptools]
+packages = ["vnorm"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

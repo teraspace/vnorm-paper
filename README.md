@@ -13,8 +13,33 @@ Prisma-Rombo and unpublished extensions are intentionally not included.
 ## Install
 
 ```bash
-pip install torch torchvision numpy
+pip install vnorm-torch
 ```
+
+## Minimal usage
+
+VNorm is designed for the feature-last layout used by PyTorch MLPs. Its
+recommended configuration is BatchNorm followed by VNorm:
+
+```python
+import torch
+from torch import nn
+from vnorm import VNorm
+
+model = nn.Sequential(
+    nn.Linear(32 * 32 * 3, 256),
+    nn.BatchNorm1d(256),
+    VNorm(256),
+    nn.Linear(256, 100),
+)
+
+x = torch.randn(8, 32 * 32 * 3)
+y = model(x)
+```
+
+The package requires PyTorch 2.0 or newer. CUDA support is inherited from the
+installed PyTorch build; a custom CUDA kernel is planned as a later optional
+optimization.
 
 ## Run the benchmark
 
